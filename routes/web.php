@@ -21,11 +21,19 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/contactus', function () {
-    return view('contactus');
+Route::get('/rates', function () {
+    return view('rates');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
 });
 
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

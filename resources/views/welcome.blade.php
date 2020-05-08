@@ -1,232 +1,125 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Calismokinbodies</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <!-- import CSS -->
-        <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+@extends('layouts.app')
 
-            .full-height {
-                height: 100vh;
-            }
+@section('content')
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+<link href="{{ asset('css/carousel.css') }}" rel="stylesheet" type="text/css" >
 
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="app">
-            <el-menu 
-            :default-active="activeIndex2"
-            class="nav justify-content-center fixed-top"
-            mode="horizontal"
-            @select="handleSelect"
-            background-color="#000000"
-            text-color="#fff"
-            active-text-color="#ffd04b">
-                <el-menu-item index="0">Calismokinbodies</el-menu-item>
-                <el-menu-item index="9" class="nav-item" disabled>Info</el-menu-item>
-                <el-menu-item index="1" class="nav-item">About</el-menu-item>
-                <el-menu-item index="2" class="nav-item">Virtual Space</el-menu-item>
-                <el-menu-item index="3" class="nav-item">Classes</el-menu-item>
-                <el-menu-item index="4" class="nav-item">Blog & News</el-menu-item>
-                <el-menu-item index="5" class="nav-item">Rates</el-menu-item>
-                <el-menu-item index="6" class="nav-item">Join Us</el-menu-item>
-                <el-menu-item index="7" class="nav-item">Contact</el-menu-item>
-            </el-menu>
-
-            <div class="flex-center position-ref full-height bg-dark">
-                <div class="content">
-                    <div class="jumbotron bg-transparent">
-                        <h1 class="display-4">Calismokinbodies Welcomes You !</h1>
-                        <p class="lead">This is a nice and tasty slogan.</p>
-                        <hr class="my-4">
-                        <p>Something extra and unecessary.</p>
-                        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex-center position-ref full-height">
-                <div class="content">
-                    <h1>About</h1>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="jumbotron jumbotron-fluid bg-transparent">
-                                <div class="container">
-                                  <h1 class="display-4">Fluid jumbotron</h1>
-                                  <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="jumbotron jumbotron-fluid bg-transparent">
-                                <div class="container">
-                                  <h1 class="display-4">Fluid jumbotron</h1>
-                                  <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex-center position-ref full-height bg-dark">
-                <div class="content">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="jumbotron jumbotron-fluid bg-transparent">
-                                <div class="container">
-                                  <h1 class="display-4">Virtual Space 1</h1>
-                                  <p class="lead">Information some small text, a picture or even a video.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="jumbotron jumbotron-fluid bg-white">
-                                <div class="container">
-                                  <h1 class="display-4">Virtual Space 2</h1>
-                                  <p class="lead">Information some small text, a picture or even a video.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex-center position-ref full-height">
-                @if (Route::has('login'))
-                    <div class="top-right links">
-                        @auth
-                            <a href="{{ url('/home') }}">Home</a>
-                        @else
-                            <a href="{{ route('login') }}">Login</a>
-    
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}">Register</a>
-                            @endif
-                        @endauth
-                    </div>
-                @endif
-                    
-                <div class="content">
-                    <div class="title m-b-md">
-                        Calismokinbodies
-                    </div>
-    
-                    <div class="links">
-                        <a href="https://laravel.com/docs">Docs</a>
-                        <a href="https://laracasts.com">Laracasts</a>
-                        <a href="https://laravel-news.com">News</a>
-                        <a href="https://blog.laravel.com">Blog</a>
-                        <a href="https://nova.laravel.com">Nova</a>
-                        <a href="https://forge.laravel.com">Forge</a>
-                        <a href="https://vapor.laravel.com">Vapor</a>
-                        <a href="https://github.com/laravel/laravel">GitHub</a>
-                    </div>
-                </div>
-            </div>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="first-slide" src="https://lightroom.adobe.com/v2c/spaces/9ebd03d7243948f69c595a3de98abb97/assets/18f819d02b8519890a01ea82a71ea352/revisions/0343664c1d934cd282dae06a87a8c359/renditions/9ee38beab51d854cf537cd47d2007f29" alt="First slide">
+        <div class="container">
+          <div class="carousel-caption text-left">
+            <h1>Example headline.</h1>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+          </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    </body>
-    <!-- import Vue before Element -->
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <!-- import JavaScript -->
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-    <script>
-        new Vue({
-            el: '#app',
-            data: function() {
-                return {
-                    visible: false,
-                    activeIndex: '1'
-                }
-            },
-            methods: {
-                handleSelect(key, keyPath) {
-                    console.log(key, keyPath);
-                }
-            }
-        })
-    </script>
-    <style>
-        html, body {
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-        .el-carousel__item h3 {
-          color: #475669;
-          font-size: 18px;
-          opacity: 0.75;
-          line-height: 300px;
-          margin: 0;
-        }
-      
-        .el-carousel__item:nth-child(2n) {
-          background-color: #99a9bf;
-        }
-      
-        .el-carousel__item:nth-child(2n+1) {
-          background-color: #d3dce6;
-        }
+      </div>
+      <div class="carousel-item">
+        <img class="second-slide" src="https://lightroom.adobe.com/v2c/spaces/9ebd03d7243948f69c595a3de98abb97/assets/5ee72a428ebf6b896f9e8717d218f1ae/revisions/c8e5e321af6442d88e7d630477fd3218/renditions/5df18cbf7386f21dc5ad04eb9c2cf62c" alt="Second slide">
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Another example headline.</h1>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="third-slide" src="https://lightroom.adobe.com/v2c/spaces/9ebd03d7243948f69c595a3de98abb97/assets/cdc9b3ae9dad7d1ab4e25201ff2c5a17/revisions/7b8fbc31f442427ab6c724218c2f7cd7/renditions/7c2c8d76544017fd086d3250c41968fe" alt="Third slide">
+        <div class="container">
+          <div class="carousel-caption text-right">
+            <h1>One more for good measure.</h1>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 
-        .parallax-image {
-            background: url('https://drive.google.com/thumbnail?id=1V3GDHOBaMwPeYz77s72HtZxY6A2Jy7p4') no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            background-size: cover;
-            -o-background-size: cover;
-        }
-    </style>
-</html>
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+        <img class="rounded-circle" src="https://lightroom.adobe.com/v2c/spaces/9ebd03d7243948f69c595a3de98abb97/assets/e2c9bba8a1ca3b89678afe48c304172a/revisions/7721fe9617484b279c03738ef11e76cd/renditions/e19b66e02a3b85fb8c8d21cc6a214943" alt="IMG" width="140" height="140">
+        <h2>Heading</h2>
+        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img class="rounded-circle" src="https://lightroom.adobe.com/v2c/spaces/9ebd03d7243948f69c595a3de98abb97/assets/913f3f66ba9d6317bb943233cd17ce6f/revisions/4055b17868ee4040b4fe3d7abff048e8/renditions/6648cef4d1d8e5376b7eea8e6115725e" alt="Generic placeholder image" width="140" height="140">
+        <h2>Heading</h2>
+        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img class="rounded-circle" src="https://lightroom.adobe.com/v2c/spaces/9ebd03d7243948f69c595a3de98abb97/assets/cdc9b3ae9dad7d1ab4e25201ff2c5a17/revisions/7b8fbc31f442427ab6c724218c2f7cd7/renditions/7c2c8d76544017fd086d3250c41968fe" alt="Generic placeholder image" width="140" height="140">
+        <h2>Heading</h2>
+        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      </div>
+      <div class="col-md-5">
+        <img class="featurette-image img-fluid mx-auto" src="https://lightroom.adobe.com/v2c/spaces/9ebd03d7243948f69c595a3de98abb97/assets/7ecb806f66f622a808cf3dc05b7cb4ca/revisions/d35c37c108b740158419151b60a079a5/renditions/86e72755a671703bd405306c2a2585a6" alt="image">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img class="featurette-image img-fluid mx-auto" src="https://lightroom.adobe.com/v2c/spaces/9ebd03d7243948f69c595a3de98abb97/assets/a966c4e6fe678b97120be276def4eba5/revisions/32e6485ff85d43a7a12ec1cec12caa82/renditions/803033e914372ca194a5ef071a884417" alt="image">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      </div>
+      <div class="col-md-5">
+        <img class="featurette-image img-fluid mx-auto" src="https://lightroom.adobe.com/v2c/spaces/9ebd03d7243948f69c595a3de98abb97/assets/67262c867b475da3eb65d4f5b580f6f8/revisions/9d977267c7ca4c7b92db6897a36c6cfe/renditions/c232a033216cf486f18d4cfe9f178cbe" alt="image">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+@endsection
